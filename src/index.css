@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: #F9F0FE;
+  color: #100E09;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+@theme {
+  --color-primary: #F9F0FE;
+  --color-secondary: #120E2E;
+  --color-black: #120E2E;
+  --color-accent: #D4AF37;
+}
