@@ -51,7 +51,7 @@ export default function Hero() {
         className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2"
       >
         <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-[#f5f0ff] dark:bg-slate-900 flex items-center justify-center overflow-hidden">
-            <Image src={profileImage} width={400} height={400} alt='Profile Image' className='relative top-20 shadow-2xl'/>
+            <Image src={profileImage} width={400} height={400} alt='Profile Image' className='relative top-12 shadow-2xl'/>
         </div>
         
         <SocialLinks />
