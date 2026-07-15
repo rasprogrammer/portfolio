@@ -1,6 +1,14 @@
+"use client"; 
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 
 export default function Header() {
+
+  const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return <>
     
       {/* --- HEADER --- */}

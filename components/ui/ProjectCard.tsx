@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 
 type Project = {
   title: string;
+  slogan: string;
   desc: string;
-  tags: string[];
+  // tags: string[];
   mock: string;
 };
 
@@ -22,8 +23,11 @@ export default function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
         <div className="p-4 space-y-2">
-          <h4 className="font-bold text-sm text-slate-900 dark:text-white">{project.title}</h4>
-          <p className="text-xs text-slate-400 dark:text-slate-400 line-clamp-3 leading-relaxed">
+          <h4 className="font-bold text-md text-slate-900 dark:text-white">{project.title}</h4>
+          <p className="text-sm font-bold text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">
+            {project.slogan}
+          </p>
+          <p className="text-sm text-slate-400 dark:text-slate-400 line-clamp-3 leading-relaxed">
             {project.desc}
           </p>
         </div>
@@ -31,13 +35,13 @@ export default function ProjectCard({ project }: { project: Project }) {
       
       <div className="p-4 pt-0 space-y-3">
         <div className="flex flex-wrap gap-1">
-          {project.tags.map((tag, tIdx) => (
+          {/* {project.tags.map((tag, tIdx) => (
             <span key={tIdx} className="bg-[#f5f0ff] dark:bg-slate-800 text-[#7c3aed] dark:text-purple-400 text-[10px] px-2 py-0.5 rounded-md font-medium">
               {tag}
             </span>
-          ))}
+          ))} */}
         </div>
-        <div className="flex items-center space-x-4 pt-1 text-xs font-medium text-slate-600 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
+        <div className="flex items-center space-x-4 pt-1 text-sm font-medium text-slate-600 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
           <a href="#" className="hover:text-[#6d28d9] flex items-center">↗ Code</a>
           <a href="#" className="hover:text-[#6d28d9] flex items-center">👁 Live Demo</a>
         </div>

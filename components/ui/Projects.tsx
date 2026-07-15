@@ -4,29 +4,33 @@ import ProjectCard from './ProjectCard';
 
 const projects = [
   {
-    title: "E-Mail Spam Detector",
-    desc: "AI-powered email client that detects spam, summarizes emails, and lets you chat with your inbox.",
-    tags: ["MongoDB", "Express", "React", "Node.js"],
+    title: "SchemaForge AI",
+    slogan: "AI-Powered Database Schema Designer",
+    desc: "AI-powered schema design tool built with Next.js, Node.js, PostgreSQL, and Claude API — generates, visualizes, and exports database schemas instantly.",
+    // tags: ["MongoDB", "Express", "React", "Node.js"],
     mock: "[E-Mail Spam Detector View]"
   },
   {
-    title: "Book Store",
-    desc: "A modern Book Management System with secure MERN stack. Features user auth, book CRUD, cart & order management.",
-    tags: ["MongoDB", "Express", "React", "Node.js"],
-    mock: "[Book Store Grid Dashboard]"
+    title: "PerpX",
+    slogan: "Perpetual Futures Trading Platform",
+    desc: "Production-grade crypto derivatives exchange with custom matching engine, margin/liquidation/funding systems, and real-time trading terminal built on TypeScript, Bun, Next.js.",
+    // tags: ["MongoDB", "Express", "React", "Node.js"],
+    mock: "[Perpetual Futures Trading Platform]"
   },
   {
-    title: "NetScan-Pro",
-    desc: "Bash-based network scanning tool that provides live host discovery, port scanning, traceroute, and ping tests.",
-    tags: ["Linux", "Bash", "Networking", "NMAP"],
-    mock: "$ nmap -sS -O 192.168.1.1"
+    title: "SaaS Billing Engine",
+    slogan: "Multi-Tenant SaaS Billing & Subscription Management Platform",
+    desc: "Multi-tenant billing engine with metered subscriptions, plan-aware rate limiting, async invoicing, and a Next.js dashboard.",
+    // tags: ["MongoDB", "Express", "React", "Node.js"],
+    mock: "[Perpetual Futures Trading Platform]"
   },
   {
-    title: "Student Portfolio",
-    desc: "A professional portfolio template for engineers and developers. Easy to customize and deploy.",
-    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
-    mock: "John Doe's Portfolio"
-  }
+    title: "Sketch",
+    slogan: "Real-Time Collaborative Whiteboard",
+    desc: "Full-stack collaborative drawing app enabling multiple users to sketch, share, and sync shapes live across rooms in real time.",
+    // tags: ["MongoDB", "Express", "React", "Node.js"],
+    mock: "[Real-Time Collaborative Whiteboard Platform]"
+  },
 ];
 
 export default function Projects() {
