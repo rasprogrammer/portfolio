@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SITE_LINKS } from '@/utils/constants';
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState(false);
@@ -43,7 +44,7 @@ export default function Header() {
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
             )}
           </button>
-          <a href="#" className="bg-[#6d28d9] hover:bg-[#5b21b6] text-white px-4 h-9 flex items-center rounded-lg text-sm font-medium transition shadow-sm shadow-[#6d28d9]/20">
+          <a href={SITE_LINKS.resume} className="bg-[#6d28d9] hover:bg-[#5b21b6] text-white px-4 h-9 flex items-center rounded-lg text-sm font-medium transition shadow-sm shadow-[#6d28d9]/20" target="_blank">
             <svg className="w-3.5 h-3.5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
             Download CV
           </a>

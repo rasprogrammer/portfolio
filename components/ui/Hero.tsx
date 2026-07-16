@@ -5,6 +5,7 @@ import profileImage from "@/public/profile.png";
 import Image from 'next/image';
 
 import SocialLinks from './SocialMedia';
+import { SITE_LINKS } from '@/utils/constants';
 
 export default function Hero() {
   return (
@@ -33,7 +34,7 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2">
-          <a href="#" className="bg-[#6d28d9] hover:bg-[#5b21b6] text-white px-5 py-2.5 rounded-xl font-medium transition flex items-center shadow-md shadow-[#6d28d9]/20 text-sm">
+          <a href={SITE_LINKS.resume} className="bg-[#6d28d9] hover:bg-[#5b21b6] text-white px-5 py-2.5 rounded-xl font-medium transition flex items-center shadow-md shadow-[#6d28d9]/20 text-sm" target='_blank'>
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
             Download CV
           </a>
