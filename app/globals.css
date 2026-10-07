@@ -1,26 +1,172 @@
 @import "tailwindcss";
 
+/* Theme is driven by data-theme on <html>, set before paint in app/layout.tsx */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Design tokens — see Design.md. Components use the semantic names below, never raw hex. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue: #0052f2;
+  --blue-on-dark: #4083ff;
+  --dark-blue: #001a4f;
+  --lilac: #6980ff;
+
+  --gray-100: #13171a;
+  --gray-90: #242a2e;
+  --gray-80: #373d42;
+  --gray-70: #50565b;
+  --gray-60: #697077;
+  --gray-50: #868d95;
+  --gray-40: #9fa5ad;
+  --gray-30: #b9bfc7;
+  --gray-20: #d5d9e0;
+  --gray-10: #f2f4f8;
+
+  /* light */
+  --bg: #ffffff;
+  --surface: var(--gray-10);
+  --fg: #000000;
+  --muted: var(--gray-70);
+  --subtle: var(--gray-60);
+  --line: var(--gray-20);
+  --accent: var(--blue);
+  --accent-text: var(--blue);
+  --scrollbar: var(--gray-30);
+  --scrollbar-hover: var(--gray-50);
+}
+
+[data-theme="dark"] {
+  --bg: #000000;
+  --surface: var(--gray-100);
+  --fg: #ffffff;
+  --muted: var(--gray-30);
+  --subtle: var(--gray-50);
+  --line: var(--gray-90);
+  --accent: var(--blue);
+  --accent-text: var(--blue-on-dark);
+  --scrollbar: var(--gray-80);
+  --scrollbar-hover: var(--gray-60);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-dark-blue: var(--dark-blue);
+  --color-lilac: var(--lilac);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-poppins), Helvetica, Arial, sans-serif;
+
+  /* Type scale */
+  --text-title-xxl: 64px;
+  --text-title-xxl--line-height: 70px;
+  --text-title-xl: 56px;
+  --text-title-xl--line-height: 62px;
+  --text-title-l: 44px;
+  --text-title-l--line-height: 48px;
+  --text-title-m: 36px;
+  --text-title-m--line-height: 40px;
+  --text-title-s: 28px;
+  --text-title-s--line-height: 31px;
+  --text-title-xs: 22px;
+  --text-title-xs--line-height: 24px;
+  --text-eyebrow-m: 14px;
+  --text-eyebrow-s: 12px;
+  --text-body-xl: 20px;
+  --text-body-xl--line-height: 27px;
+  --text-body-l: 18px;
+  --text-body-l--line-height: 24px;
+  --text-body-m: 16px;
+  --text-body-m--line-height: 22px;
+  --text-body-s: 14px;
+  --text-body-s--line-height: 19px;
+  --text-body-xs: 12px;
+  --text-body-xs--line-height: 16px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  transition: background-color 200ms, color 200ms;
+}
+
+/* ---------- Scrollbars ----------
+   A thin floating pill on a clear track. Darker on hover, blue while dragging.
+   Inside .scroll-area the thumb stays hidden until the area is hovered, then fades in. */
+
+/* Registered so the thumb color can transition (plain custom properties can't animate) */
+@property --thumb {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+html {
+  --thumb: var(--scrollbar);
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumb);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+  border-width: 2px;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--accent);
+  border-width: 2px;
+}
+
+.scroll-area {
+  --thumb: var(--scrollbar);
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  transition: --thumb 250ms ease;
+}
+@media (hover: hover) {
+  .scroll-area {
+    --thumb: transparent;
+  }
+  .scroll-area:hover,
+  .scroll-area:focus-within {
+    --thumb: var(--scrollbar);
+  }
+}
+
+/* Firefox has no ::-webkit-scrollbar; give it the standard thin version */
+@supports not selector(::-webkit-scrollbar) {
+  html,
+  .scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumb) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .scroll-area {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
 }

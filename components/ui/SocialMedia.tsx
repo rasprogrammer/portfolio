@@ -1,31 +1,31 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faXTwitter, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { SITE_LINKS } from '@/utils/constants';
 
-const socialMediaIcons = [
-  { name: "GitHub", icon: <FontAwesomeIcon icon={faGithub} />, link: "https://github.com/rasprogrammer" },
-  { name: "LinkedIn", icon: <FontAwesomeIcon icon={faLinkedin} />, link: "https://linkedin.com" },
-  { name: "Twitter", icon: <FontAwesomeIcon icon={faTwitter} />, link: "https://twitter.com/rasprogrammer" },
-  { name: "WhatsApp", icon: <FontAwesomeIcon icon={faWhatsapp} />, link: "https://wa.me/+916202784972" }
+const socialMediaLinks = [
+  { name: "GitHub", icon: faGithub, link: SITE_LINKS.github },
+  { name: "LinkedIn", icon: faLinkedin, link: SITE_LINKS.linkedin },
+  { name: "X", icon: faXTwitter, link: SITE_LINKS.x },
+  { name: "WhatsApp", icon: faWhatsapp, link: SITE_LINKS.whatsapp },
 ];
 
 export default function SocialLinks() {
   return (
-    <div className="w-72 sm:w-80 flex flex-col gap-4 items-center lg:items-start space-x-4 mt-6 text-md text-slate-500 dark:text-slate-400 font-medium">
-      <span>Connect with me</span>
-      <div className="flex space-x-3">
-        {socialMediaIcons.map((social, i) => (
-          <a 
-            key={i} 
-            href={social.link} 
-            target="_blank" 
+    <ul className="flex gap-2">
+      {socialMediaLinks.map((social) => (
+        <li key={social.name}>
+          <a
+            href={social.link}
+            target="_blank"
             rel="noopener noreferrer"
+            aria-label={social.name}
             title={social.name}
-            className="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-slate-900 hover:text-[#6d28d9] hover:border-[#6d28d9] transition text-sm"
+            className="w-9 h-9 rounded-lg border border-line flex items-center justify-center text-muted hover:text-accent-text hover:border-accent-text transition-colors"
           >
-            {social.icon}
+            <FontAwesomeIcon icon={social.icon} />
           </a>
-        ))}
-      </div>
-    </div>
+        </li>
+      ))}
+    </ul>
   );
 }
