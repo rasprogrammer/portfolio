@@ -136,8 +136,14 @@ html {
 .scroll-area {
   --thumb: var(--scrollbar);
   scroll-behavior: smooth;
-  overscroll-behavior: contain;
   transition: --thumb 250ms ease;
+}
+/* Desktop is one fixed screen, so keep wheel scrolls inside the card.
+   Below lg the page scrolls, so let a card hand the scroll on to the page at its end. */
+@media (width >= 64rem) {
+  .scroll-area {
+    overscroll-behavior: contain;
+  }
 }
 @media (hover: hover) {
   .scroll-area {
